@@ -2,56 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Still & Wild</title>
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #f0f8ff;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+.leaf-left1, .leaf-left2, .leaf-right1, .leaf-right2 {
+  position: fixed;
+  font-size: 3rem;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: none;
+}
 
-    .container {
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: #ffffffcc;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
+.leaf-left1 {
+  left: 5vw;
+  top: -5vh;
+  animation: fallLeft1 7s linear infinite;
+}
 
-    h1, h2 {
-      text-align: center;
-    }
+.leaf-left2 {
+  left: 10vw;
+  top: -8vh;
+  animation: fallLeft2 12s linear infinite;
+}
 
-    .nav {
-      background-color: #eaf4f4;
-      padding: 1rem;
-      text-align: center;
-    }
+.leaf-right1 {
+  right: 5vw;
+  top: -10vh;
+  animation: fallRight1 9s linear infinite;
+}
 
-    .nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
+.leaf-right2 {
+  right: 10vw;
+  top: -3vh;
+  animation: fallRight2 15s linear infinite;
+}
 
-    .nav a {
-      text-decoration: none;
-      color: #333;
-    }
+@keyframes fallLeft1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(-360deg); }
+}
 
-    .intro {
-      margin-top: 2rem;
-    }
-  </style>
+@keyframes fallLeft2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(-180deg); }
+}
+
+@keyframes fallRight1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+@keyframes fallRight2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(720deg); }
+}
+
+
+.about-container {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #F6FFE0;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  text-align: center;
+  color:#265902;
+}
+
+.about-container2 {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #F2F1E4;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  text-align: center;
+  color:#A66953;
+}
+
+.about-container3 {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #E2F0D6;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  text-align: center;
+  color:#734E39;
+}
+    
+.about-gif {
+  width: 80%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav {
+  background-color: #eaf4f4;
+  padding: 1rem;
+  text-align: center;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+</style>
 </head>
-<body>
+<body class="about-page">
+
+<div class="leaf-left1">🍃</div>
+<div class="leaf-left2">🍁</div>
+<div class="leaf-right1">🍂</div>
+<div class="leaf-right2">🍃</div>
+
   <header class="nav">
     <h1>Still & Wild</h1>
     <nav>
@@ -67,18 +149,45 @@
     </nav>
   </header>
 
-  <main class="container">
-    <section class="intro">
-      <h2>About Us</h2>
-      <p>
-        We are a collective of artists, writers, and dreamers who find endless inspiration in nature’s quiet beauty. 
-        Still & Wild was born out of a shared longing for spaces that honor slowness, reflection, and creativity rooted in the natural world.
-      </p>
-      <p>
-        We hope this project becomes a soft place for you to land — a field of small wonders, waiting to be explored.
-      </p>
-    </section>
+  <div class="leaf-container left"></div>
+<div class="leaf-container right"></div>
+
+  <main class="about-container">
+    <h2>About Still & Wild</h2>
+    <p>
+      Still & Wild is a collaborative webzine born from our shared love for nature, creativity, and reflection.
+      We believe that quiet moments — like walking through forests or sketching under trees — hold healing power.
+    </p>
+    <p>
+      This space invites readers to slow down, to listen to the rustle of leaves, to notice shifting light,
+      to rediscover small beauties often overlooked.
+    </p>
+    <img src="https://64.media.tumblr.com/8a35b143cf857cf6ec52ea783c5f81c9/tumblr_on1hxqZOgl1r9i2iuo1_r2_500.gif" class="about-gif" />
   </main>
+
+
+  <main class="about-container2">
+  <h2>Who We Are</h2>
+      <p>
+        We are a group of friends, artists, writers, and quiet observers who find joy in the subtle details of the world around us. 
+        This project emerged from our shared longing for calm and connection — with ourselves, with nature, and with each other.
+      </p>
+      <p>
+        Each of us brings a different voice to the zine: some of us carry sketchbooks into the forest, 
+        others collect sounds or memories. Together, we weave these threads into a digital tapestry of stillness and wildness.
+      </p>
+    <img src="https://miro.medium.com/v2/resize:fit:760/0*yPlR4PAdA2ypwpD2.gif" class="about-gif" />
+  </main>
+
+  <main class="about-container3">
+     <h2>Why We Created This</h2>
+      <p>
+        In a world that often rushes forward, Still & Wild is our way of stepping sideways — into a slower, softer pace. 
+        We hope this space reminds you that even a single breath, a birdsong, or a fallen leaf can be a starting point for wonder.
+      </p>
+    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/source/b415f429340193.55eea8831a022.gif" class="about-gif" />
+  </main>
+
 
   <footer style="text-align: center; padding: 2rem; font-size: 0.9rem;">
     © Still & Wild — 2025
