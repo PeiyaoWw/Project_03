@@ -3,52 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Still & Wild 🌸</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/about.css" />
+  <title>Still & Wild</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .moving-square {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05); /* very soft white */
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: drift 30s linear infinite;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 1.5rem;
+      opacity: 0.7;
+      z-index: 2;
+    }
+
+    .nav-link {
+      position: absolute;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+    }
+
+    /* Positioning each link */
+    .home {
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .about {
+      top: 25%;
+      left: 25%;
+    }
+
+    .field-notes {
+      top: 25%;
+      right: 25%;
+    }
+
+    .artists-collective {
+      bottom: 30%;
+      left: 20%;
+    }
+
+    .playlists-soundscapes {
+      bottom: 20%;
+      left: 30%;
+    }
+
+    .guest-spot {
+      bottom: 20%;
+      right: 30%;
+    }
+  </style>
 </head>
 <body>
-  <header class="nav">
-    <h1>Still & Wild</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="field-notes.html">Field Notes</a></li>
-        <li><a href="Artists Collections.html">Artists Collections</a></li>
-        <li><a href="reflections.html">Reflections</a></li>
-        <li><a href="soundscapes.html">Playlists & Soundscapes</a></li>
-        <li><a href="guest-spot.html">Guest Spot</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="moving-square"></div>
 
-  <main class="container">
-    <section class="intro">
-      <h2>Project Statement</h2>
-      <p>
-        Still & Wild is a collaborative webzine born from our shared love for nature, creativity, and reflection. 
-        We believe that quiet moments of observation — like walking through a forest, sketching by a stream, or writing 
-        thoughts inspired by birdsong — can be powerful forms of healing and self-expression.
-      </p>
-      <p>
-        This digital space seeks to hold stillness, slowness, and beauty. 
-        Through this project, we hope to offer a gentle space for readers — a place to slow down, 
-        reconnect with the world around them, and rediscover the small, meaningful things that are often overlooked.
-      </p>
-    </section>
+  <div class="center-text">Choose a path...</div>
 
-    <section class="latest">
-      <h2>🌸 Latest Post Preview</h2>
-      <figure>
-        <img src="preview.jpg" alt="Latest post preview" style="width:100%; border-radius: 12px;" />
-        <figcaption><em>"Three petals, two shadows, and a thought left behind under the willow."</em></figcaption>
-      </figure>
-    </section>
-  </main>
+  <a href="index.html" class="nav-link home">
+    Home <div class="circle"></div>
+  </a>
 
-  <footer style="text-align: center; padding: 2rem; font-size: 0.9rem;">
-    © Still & Wild — 2025
-  </footer>
+  <a href="about.html" class="nav-link about">
+    About <div class="circle"></div>
+  </a>
+
+  <a href="field-notes.html" class="nav-link field-notes">
+    Field Notes <div class="circle"></div>
+  </a>
+
+  <a href="Artists Collective.html" class="nav-link artists-collective">
+    Artists Collective <div class="circle"></div>
+  </a>
+
+  <a href="soundscapes.html" class="nav-link playlists-soundscapes">
+    Playlists & Soundscapes <div class="circle"></div>
+  </a>
+
+  <a href="guest-spot.html" class="nav-link guest-spot">
+    Guest Spot <div class="circle"></div>
+  </a>
 </body>
 </html>
