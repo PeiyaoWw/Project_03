@@ -7,38 +7,69 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: #f0f8ff;
-      color: #333;
+      background: #000;
+      color: #fff;
       margin: 0;
       padding: 0;
+      height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .moving-square {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: drift 30s linear infinite;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
     }
 
     .container {
       max-width: 600px;
-      margin: 3rem auto;
+      margin: 4rem auto;
       padding: 2rem;
-      background: #ffffffcc;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+      z-index: 2;
+      position: relative;
     }
 
     h1, h2 {
       text-align: center;
+      color: #fff;
     }
 
     .nav-button {
       display: inline-block;
       margin-bottom: 1rem;
       text-decoration: none;
-      background: #ccc;
+      background: rgba(255, 255, 255, 0.1);
       padding: 0.5rem 1rem;
       border-radius: 8px;
-      color: #333;
+      color: #fff;
       transition: background 0.3s;
     }
 
     .nav-button:hover {
-      background: #bbb;
+      background: rgba(255, 255, 255, 0.2);
     }
 
     form {
@@ -47,12 +78,12 @@
       gap: 1rem;
     }
 
-    textarea {
-      resize: none;
-      height: 80px;
+    textarea, input[type="color"] {
       padding: 0.5rem;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
     }
 
     button {
@@ -72,7 +103,7 @@
     #forest {
       margin-top: 2rem;
       padding-top: 1rem;
-      border-top: 2px dashed #aaa;
+      border-top: 2px dashed rgba(255, 255, 255, 0.2);
     }
 
     #moodDisplay {
@@ -80,6 +111,7 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 1rem;
+      justify-content: center;
     }
 
     .moodLeaf {
@@ -89,19 +121,21 @@
       display: inline-block;
       position: relative;
       transition: transform 0.2s;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
     }
 
     .moodLeaf:hover::after {
       content: attr(data-message);
       position: absolute;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.8);
       color: white;
       padding: 0.4rem;
       border-radius: 6px;
       top: 50px;
       left: -20px;
       white-space: nowrap;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      z-index: 10;
     }
 
     .clear-btn {
@@ -115,8 +149,10 @@
   </style>
 </head>
 <body>
+  <div class="moving-square"></div>
+
   <div class="container">
-    <a href="index.html" class="nav-button">Back to Home</a>
+    <a href="index.html" class="nav-button">← Back to Main</a>
     <h1>Guest Spot</h1>
 
     <form id="moodForm">
