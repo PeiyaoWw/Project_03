@@ -213,7 +213,7 @@
 <canvas id="bgCanvas"></canvas>
 
 <!-- INTRO -->
-<div class="intro">
+<div class="intro" id="intro">
   <div class="left">
     <div class="circle-image">
       <img src="images/py1.jpg" alt="Black and white nature textures collage" />
@@ -267,25 +267,16 @@
 <script>
   function showMain() {
     document.querySelector('.intro').classList.add('hidden');
-    setTimeout(() => {
-      document.querySelector('#main').classList.add('visible');
-    }, 1000);
+    document.querySelector('#main').classList.add('visible');
   }
 
   function goBack() {
     if (document.referrer && document.referrer !== location.href) {
       window.history.back();
     } else {
-      window.location.href = "index.html"; // fallback if no referrer
+      window.location.href = "index.html";
     }
   }
-
-  // Auto-skip after 7 seconds
-  setTimeout(() => {
-    if (!document.querySelector('#main').classList.contains('visible')) {
-      showMain();
-    }
-  }, 7000);
 
   // Ambient canvas effect
   const canvas = document.getElementById('bgCanvas');
