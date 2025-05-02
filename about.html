@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Still & Wild</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Still & Wild — Falling Leaves</title>
   <style>
     body {
       margin: 0;
       background: #000;
       color: #fff;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Georgia', serif;
       overflow-x: hidden;
-      position: relative;
+      height: 100vh;
     }
 
-    .leaf-left1, .leaf-left2, .leaf-right1, .leaf-right2 {
+    p{
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+.leaf-left1, .leaf-left2, .leaf-right1, .leaf-right2 {
       position: fixed;
       font-size: 3rem;
       z-index: 2;
@@ -22,12 +27,12 @@
       pointer-events: none;
     }
 
-    .leaf-left1 { left: 5vw; top: -5vh; animation: fallLeft1 7s linear infinite; }
-    .leaf-left2 { left: 10vw; top: -8vh; animation: fallLeft2 12s linear infinite; }
+     .leaf-left1 { left: 5vw; top: -5vh; animation: fallLeft1 7s linear infinite; }
+    .leaf-left2 { left: 30vw; top: -8vh; animation: fallLeft2 12s linear infinite; }
     .leaf-right1 { right: 5vw; top: -10vh; animation: fallRight1 9s linear infinite; }
-    .leaf-right2 { right: 10vw; top: -3vh; animation: fallRight2 15s linear infinite; }
+    .leaf-right2 { right: 30vw; top: -3vh; animation: fallRight2 15s linear infinite; }
 
-    @keyframes fallLeft1 {
+@keyframes fallLeft1 {
       0% { transform: translateY(0) rotate(0deg); }
       100% { transform: translateY(110vh) rotate(-360deg); }
     }
@@ -44,130 +49,178 @@
       100% { transform: translateY(110vh) rotate(720deg); }
     }
 
-    .about-container, .about-container2, .about-container3 {
-      max-width: 700px;
-      margin: 5rem auto;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
-      font-family: 'Georgia', serif;
-      line-height: 1.6;
-      text-align: center;
-      color: #fff;
-      z-index: 2;
-      position: relative;
+    .leaf {
+      position: absolute;
+      top: -10vh;
+      animation: fall 12s linear infinite;
+      animation-delay: var(--delay);
+      left: var(--left);
+      z-index: 1;
     }
 
-    .about-gif {
-      width: 80%;
-      max-width: 500px;
-      border-radius: 12px;
-      margin-top: 2rem;
-      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
+    .leaf:hover {
+      animation-play-state: paused;
     }
 
-    .nav {
-      background-color: rgba(255, 255, 255, 0.05);
+    .emoji {
+      font-size: 5rem;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
       padding: 1rem;
-      text-align: center;
-      position: relative;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
       z-index: 3;
+      text-align: center;
     }
 
-    .nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
+    .leaf:hover .tooltip {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    .nav a {
-      text-decoration: none;
-      color: #fff;
+    .tooltip h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
+    .tooltip p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .tooltip img {
+      margin-top: 1rem;
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.15);
+    }
+
+  .back-intro {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-intro:hover {
+      background: #eee;
+      transform: scale(1.05);
+    }
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
       color: #aaa;
+      z-index: 3;
+      position: relative;
     }
 
-    @media (max-width: 600px) {
-      .about-container, .about-container2, .about-container3 {
-        margin: 2rem 1rem;
-        padding: 1.5rem;
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
       }
-
-      .about-gif {
-        width: 100%;
+      100% {
+        transform: translateY(110vh);
       }
     }
   </style>
 </head>
-<body class="about-page">
+<body>
 
-  <div class="leaf-left1">🍃</div>
-  <div class="leaf-left2">🍁</div>
-  <div class="leaf-right1">🍂</div>
-  <div class="leaf-right2">🍃</div>
+<div class="main-content" id="main">
+  <button class="back-intro" onclick="goBack()" aria-label="Back to Home">← back to home</button>
 
-  <header class="nav">
-    <h1>Still & Wild</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="field-notes.html">Field Notes</a></li>
-        <li><a href="creative-practices.html">Creative Practices</a></li>
-        <li><a href="reflections.html">Reflections</a></li>
-        <li><a href="soundscapes.html">Playlists & Soundscapes</a></li>
-        <li><a href="guest-spot.html">Guest Spot</a></li>
-      </ul>
-    </nav>
-  </header>
+  <p>Hover near the falling leaves to discover our content.</p>
+ 
+  <div class="leaf" style="--delay: 0s; --left: 15vw;">
+    <div class="emoji">🍃</div>
+    <div class="tooltip">
+      <h3>About Still & Wild</h3>
+      <p>Still & Wild is a collaborative webzine born from our shared love for nature, creativity, and reflection. We believe that quiet moments like walking through forests or sketching under trees hold healing power.</p>
+      <img src="https://64.media.tumblr.com/8a35b143cf857cf6ec52ea783c5f81c9/tumblr_on1hxqZOgl1r9i2iuo1_r2_500.gif" alt="Forest gif" />
+    </div>
+  </div>
 
-  <main class="about-container">
-    <h2>About Still & Wild</h2>
-    <p>
-      Still & Wild is a collaborative webzine born from our shared love for nature, creativity, and reflection.
-      We believe that quiet moments — like walking through forests or sketching under trees — hold healing power.
-    </p>
-    <p>
-      This space invites readers to slow down, to listen to the rustle of leaves, to notice shifting light,
-      to rediscover small beauties often overlooked.
-    </p>
-    <img src="https://64.media.tumblr.com/8a35b143cf857cf6ec52ea783c5f81c9/tumblr_on1hxqZOgl1r9i2iuo1_r2_500.gif" class="about-gif" />
-  </main>
+  <div class="leaf" style="--delay: 1s; --left: 45vw;">
+    <div class="emoji">🍀</div>
+    <div class="tooltip">
+      <h3>Who We Are</h3>
+      <p>We are a group of artists and writers who find joy in subtle details. This project emerged from a longing for calm and connection with ourselves, nature, and each other.</p>
+      <img src="https://miro.medium.com/v2/resize:fit:760/0*yPlR4PAdA2ypwpD2.gif" alt="Nature gif" />
+    </div>
+  </div>
 
-  <main class="about-container2">
-    <h2>Who We Are</h2>
-    <p>
-      We are a group of friends, artists, writers, and quiet observers who find joy in the subtle details of the world around us. 
-      This project emerged from our shared longing for calm and connection — with ourselves, with nature, and with each other.
-    </p>
-    <p>
-      Each of us brings a different voice to the zine: some of us carry sketchbooks into the forest, 
-      others collect sounds or memories. Together, we weave these threads into a digital tapestry of stillness and wildness.
-    </p>
-    <img src="https://miro.medium.com/v2/resize:fit:760/0*yPlR4PAdA2ypwpD2.gif" class="about-gif" />
-  </main>
+  <div class="leaf-left1">★</div>
+  <div class="leaf-left2">✳︎</div>
+  <div class="leaf-right1">★</div>
+  <div class="leaf-right2">✳︎</div>
 
-  <main class="about-container3">
-    <h2>Why We Created This</h2>
-    <p>
-      In a world that often rushes forward, Still & Wild is our way of stepping sideways — into a slower, softer pace. 
-      We hope this space reminds you that even a single breath, a birdsong, or a fallen leaf can be a starting point for wonder.
-    </p>
-    <img src="https://mir-s3-cdn-cf.behance.net/project_modules/source/b415f429340193.55eea8831a022.gif" class="about-gif" />
-  </main>
+  <div class="leaf" style="--delay: 2s; --left: 75vw;">
+    <div class="emoji">🍂</div>
+    <div class="tooltip">
+      <h3>Why We Created This</h3>
+      <p>Still & Wild is our way of stepping into a slower, softer pace. We hope this space reminds you that even a single breath or a fallen leaf can spark wonder.</p>
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/source/b415f429340193.55eea8831a022.gif" alt="Calm gif" />
+    </div>
+  </div>
 
+  <script>
+  function showMain() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.querySelector('#main').classList.add('visible');
+  }
+
+  function goBack() {
+    if (document.referrer && document.referrer !== location.href) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  for (let i = 0; i < 400; i++) {
+    ctx.fillStyle = 'rgba(255,255,255,0.02)';
+    ctx.beginPath();
+    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
   <footer>
     © Still & Wild — 2025
   </footer>
+
 </body>
 </html>

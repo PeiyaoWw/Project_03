@@ -82,6 +82,21 @@
         "In the hush of evening, everything that matters speaks without words."
       </blockquote>
     </section>
+
+    <script>
+  function showMain() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.querySelector('#main').classList.add('visible');
+  }
+
+  function goBack() {
+    if (document.referrer && document.referrer !== location.href) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+</script>
   </main>
 
   <footer style="text-align: center; padding: 2rem; font-size: 0.9rem;">
